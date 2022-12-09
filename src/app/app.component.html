@@ -1,25 +1,13 @@
 <div class="box-body">
   <div class="box-header">Улучшение стратегического плана ИТ-компании</div>
-  <div class="box-content">
-    <div class="box-add">
-      <div class="right-add">
-        <div class="add-num">{{ plans.length + 1 }}</div>
-        <input type="text" class="add-input" [(ngModel)]="namePlan">
-      </div>
-      <button class="left-add" (click)="addPlan()">Добавить</button>
+  <div #pages [ngSwitch]="stepNum">
+    <div class="box-footer" *ngSwitchDefault>
+      <button (click)="openForm()">Ввести данные</button>
+      <button><label for="file">Загрузить файл</label></button>
+      <input type="file" id="file" name="file" (change)="fileChosen($event)" accept=".xlsx">
     </div>
-    <div class="box-variants" *ngIf="plans.length">
-      <div class="variants-header">Варианты плана</div>
-      <div class="variant" *ngFor="let plan of plans">
-        <div class="variant-num">{{ plan.num }}</div>
-        <div class="variant-text">{{ plan.name }}</div>
-        <div class="variant-close material-icons" *ngIf="!isRangCalc">close</div>
-        <div class="variant-rang" *ngIf="isRangCalc">{{ plan.rang }}</div>
-      </div>
-    </div>
-  </div>
-  <div class="box-footer">
-    <button>Отчистить</button>
-    <button>Расчитать</button>
+    <app-welcome-page *ngSwitchCase="1" [plans]="plans" [experts]="experts" (calculate)="calculate($event)"></app-welcome-page>
+    <app-finish-page *ngSwitchCase="2" [plans]="plans" [experts]="experts" (changePage)="changePage($event)"></app-finish-page>
+    <app-about *ngSwitchCase="3" (changePage)="changePage($event)"></app-about>
   </div>
 </div>

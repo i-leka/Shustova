@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
+import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
+import { FinishPageComponent } from './components/finish-page/finish-page.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomePageComponent,
+    FinishPageComponent,
+    AboutComponent
   ],
     imports: [
         BrowserModule,

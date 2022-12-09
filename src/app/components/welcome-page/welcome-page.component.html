@@ -1,0 +1,38 @@
+<div class="box-content">
+    <div class="box-add">
+        <div class="right-add">
+            <div class="add-num">{{ plans.length + 1 }}</div>
+            <input type="text" class="add-input" [(ngModel)]="namePlan">
+        </div>
+        <button class="left-add" (click)="addPlan()">Добавить</button>
+    </div>
+    <div>
+       <div><span class="expert">{{experts[0]}}</span><input type="text" [(ngModel)]="ex1"></div>
+       <div><span class="expert">{{experts[1]}}</span><input type="text" [(ngModel)]="ex2"></div>
+       <div><span class="expert">{{experts[2]}}</span><input type="text" [(ngModel)]="ex3"></div>
+    </div>
+    <div class="variants-header">Варианты проектов</div>
+    <table class="box-variants" *ngIf="!!plans.length; else empty">
+        <tr>
+            <th>Номер</th>
+            <th>Название</th>
+            <th>{{experts[0]}}</th>
+            <th>{{experts[1]}}</th>
+            <th>{{experts[2]}}</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let plan of plans">
+            <td>{{plan.num}}</td>
+            <td>{{plan.name}}</td>
+            <td>{{plan.ex1}}</td>
+            <td>{{plan.ex2}}</td>
+            <td>{{plan.ex3}}</td>
+            <td><span class="variant-close material-icons" (click)="deletePlan(plan.num)">close</span></td>
+        </tr>
+    </table>
+    <ng-template #empty>Добавьте варианты</ng-template>
+</div>
+<div class="box-footer">
+    <button (click)="removePlans()">Отчистить</button>
+    <button (click)="calc()">Расчитать</button>
+</div>

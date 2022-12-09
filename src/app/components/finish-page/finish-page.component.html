@@ -1,0 +1,30 @@
+<div class="box-content">
+    <div class="variants-header">Рассчитанные данные</div>
+    <table class="box-variants">
+        <tr>
+            <th>Номер</th>
+            <th>Идент. номер</th>
+            <th>Название</th>
+            <th>{{experts[0]}}</th>
+            <th>{{experts[1]}}</th>
+            <th>{{experts[2]}}</th>
+            <th>Средний ранг</th>
+            <th>Медианный ранг</th>
+        </tr>
+        <tr *ngFor="let plan of plans; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{plan.num}}</td>
+            <td>{{plan.name}}</td>
+            <td>{{plan.ex1}}</td>
+            <td>{{plan.ex2}}</td>
+            <td>{{plan.ex3}}</td>
+            <td>{{plan.rang}}</td>
+            <td>{{plan.medrang}}</td>
+        </tr>
+    </table>
+</div>
+<div class="box-footer">
+    <button (click)="toStart()">В начало</button>
+    <button (click)="toPDF()">Экспорт в PDF</button>
+    <button (click)="about()">Справка</button>
+</div>
